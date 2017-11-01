@@ -6,21 +6,17 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
-  
   def show
     @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
   end
 
-  
   def new
     @movie = current_user.movies.build
   end
 
-  
   def edit
   end
 
- 
   def create
     @movie = current_user.movies.build(movie_params)
 
@@ -35,7 +31,6 @@ class MoviesController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @movie.update(movie_params)
@@ -48,7 +43,6 @@ class MoviesController < ApplicationController
     end
   end
 
- 
   def destroy
     @movie.destroy
     respond_to do |format|
